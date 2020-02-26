@@ -1,0 +1,28 @@
+use std::io;
+use std::cmp;
+use rand::Rng;
+
+
+fn main() {
+    // Get the number from the user
+    println! ("Guess a number ->");
+    let mut guess = String::new ();
+    io::stdin ().read_line (&mut guess)
+	.expect ("Error: failed to read line");
+    let guess: u32 = guess.trim ().parse ()
+	.expect ("Please type a number");
+    
+    fg
+println! ("You guessed: {}", guess);
+
+    // Generate the secret number
+    let secret = rand::thread_rng ().gen_range (1, 101);
+    println! ("The secret number is {}", secret);
+
+    // "pattern matching " (lol)
+    match guess.cmp (&secret) {
+	cmp::Ordering::Less => println! ("Too small"),
+	cmp::Ordering::Greater => println! ("Too big"),
+	cmp::Ordering::Equal => println! ("nice"),
+    }
+}
